@@ -11,10 +11,7 @@ add_executable(main main.c ble/picostack.c ble/btlibp.c)
 target_compile_definitions(main PRIVATE PICO_STACK_SIZE=4096)
 target_link_libraries(main
   pico_stdlib
-  hardware_clocks
-  hardware_pio
   hardware_pwm
-  hardware_irq
   pico_cyw43_arch_none)
 pico_enable_stdio_usb(main 1)
 target_include_directories(main PUBLIC src ble)

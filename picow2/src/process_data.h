@@ -22,21 +22,11 @@ void process_data(char *s){
     else if (x_data > 20) servo_left();
     else if (x_data < -20) servo_right();
     
-    int y_data = atoi(tokens[2]) * 2;
+    int y_data = atoi(tokens[2]) * 1.2;//change 1.2 to 2.0 for full speed
     printf("y_data: %d\n",y_data);
     if(y_data == 0) stop_motor();
     else if(y_data > 0) forward_motor(y_data);
-    else if(y_data < 0) reverse_motor(abs(y_data));
-    
-    
-    //int y_data = atoi(tokens[2]) * 50;//duty cycle 0 - 5000
-    //y is up down
-  //  int y_data = atoi(tokens[2]) * 35;//adjust 35 plus minus for motor speed
-    //printf("y_data: %d\n",y_data);
-   // if(y_data == 0) stop();
-   // else if(y_data > 0) forward(y_data);
-   // else if(y_data < 0) reverse(abs(y_data));
-  }
+    else if(y_data < 0) reverse_motor(abs(y_data));}
     
 }
 

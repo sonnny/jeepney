@@ -1,4 +1,5 @@
 //main.c
+//https://github.com/petzval/btferret/blob/main/picostack/mycodepico.c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -27,7 +28,6 @@ PRIMARY_SERVICE=112233445566778899AABBCCDDEEFF00              \n\
    LECHAR = LED control SIZE=1  PERMIT=04 UUID=CAFE  ;index 2 \n\
 "};
                                                                  
-
 void mycode(void);
 
 void mycode(){
@@ -53,13 +53,13 @@ init_pwm();
 int lecallback(int node,int op,int cticn){
   unsigned char data_received[30];
   
-  if(op == LE_CONNECT) cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);
+  if(op == LE_CONNECT) cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);//turn on led when connected
 
-  else if(op == LE_WRITE && cticn == 2){ //writing to characteristic CAFE, index 2
+  else if(op == LE_WRITE && cticn == 2){ //reading characteristic CAFE, index 2
     read_ctic(localnode(),2,data_received,sizeof(data_received));
     process_data(data_received);
   }
-  else if(op == LE_DISCONNECT) cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN,0);
+  else if(op == LE_DISCONNECT) cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN,0);//turn off led when disconnected
 
   return(SERVER_CONTINUE);
   }
