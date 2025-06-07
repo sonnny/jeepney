@@ -37,7 +37,7 @@ void sendData(data) async {
   catch (e){}}
   
 //create a bluetooth device from ble address
-//connect device
+//connect device without scan
 //discover services
 //assign transmit characteristic
 //update status text
@@ -74,9 +74,9 @@ permissions on settings''')),
 //start 3rd column with a row
 Padding(padding: EdgeInsets.all(10), child:Row(children:[
 
-Text('ble address:  '),
+Text('ble address: '),
 
-Text('${BLE_ADDRESS} ',style:TextStyle(fontSize:18)),
+Text('${BLE_ADDRESS} ',style:TextStyle(fontSize:16)),
 
 SizedBox(width:5),
 
